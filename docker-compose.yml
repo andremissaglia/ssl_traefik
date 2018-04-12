@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  proxy:
+    image: traefik
+    command: --web --web.metrics --docker --configFile=/traefik.toml --logLevel=DEBUG
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.toml:/traefik.toml
+      - ./acme.json:/acme.json
+
+    networks:
+      - webgateway
+
+networks:
+  webgateway:
+    external: true
+
