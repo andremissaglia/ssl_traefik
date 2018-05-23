@@ -1,4 +1,3 @@
-#defaultEntryPoints = ["http", "https", "traefik"]
 defaultEntryPoints = ["http", "https"]
 [entryPoints]
   [entryPoints.http]
